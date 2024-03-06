@@ -1,0 +1,107 @@
+---
+---
+
+<style lang="scss">
+  /* Basic Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Navbar Styles */
+  .navbar {
+    background-color: darkseagreen;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-title {
+    font-size: 1.5rem;
+  }
+
+  .menu {
+    list-style: none;
+    display: flex;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 0 1rem;
+  }
+
+  .menu-checkbox {
+    display: none; /* Hide the checkbox */
+  }
+
+  .burger-icon,
+  .close-icon {
+    display: none; /* Hide both icons on larger screens */
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+
+    .menu li a {
+      padding: 1rem 0;
+    }
+
+    .burger-icon {
+      display: block;
+    }
+
+    /* Show menu and close icon, hide burger icon when the checkbox is checked */
+    #toggle-menu:checked ~ .menu,
+    #toggle-menu:checked ~ .close-icon {
+      display: flex;
+    }
+
+    #toggle-menu:checked ~ .burger-icon {
+      display: none;
+    }
+
+    /* Hide menu and close icon, show burger icon when the checkbox is not checked */
+    #toggle-menu:not(:checked) ~ .menu,
+    #toggle-menu:not(:checked) ~ .close-icon {
+      display: none;
+    }
+
+    #toggle-menu:not(:checked) ~ .burger-icon {
+      display: block;
+    }
+
+    /* Order of elements */
+    .burger-icon {
+      order: 1;
+    }
+
+    .close-icon {
+      order: 2;
+    }
+  }
+</style>
+
+<nav class="navbar">
+    <div class="brand-title">Brand Name</div>
+    <input type="checkbox" id="toggle-menu" class="menu-checkbox">
+    <label for="toggle-menu" class="burger-icon">☰</label>
+    <label for="toggle-menu" class="close-icon">×</label>
+    <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
